@@ -15,7 +15,7 @@ class CardInput extends StatefulWidget {
   final PaymentCard? card;
   final ValueChanged<PaymentCard?> onValidated;
 
-  CardInput({
+  const CardInput({
     Key? key,
     required this.buttonText,
     required this.card,
@@ -28,10 +28,11 @@ class CardInput extends StatefulWidget {
 }
 
 class _CardInputState extends State<CardInput> {
-  var _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final PaymentCard? _card;
   var _autoValidate = AutovalidateMode.disabled;
   late TextEditingController numberController;
+  // ignore: unused_field
   bool _validated = false;
 
   _CardInputState(this._card);

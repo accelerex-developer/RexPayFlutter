@@ -207,6 +207,7 @@ class PaymentCard {
   /// Validates the number against Luhn algorithm https://de.wikipedia.org/wiki/Luhn-Algorithmus#Java
   /// [number]  - number to validate
   /// Returns true if the number is passes the verification.
+  // ignore: unused_element
   bool _isValidLuhnNumber(String number) {
     int sum = 0;
     int length = number.trim().length;

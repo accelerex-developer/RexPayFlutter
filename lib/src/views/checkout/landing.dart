@@ -1,35 +1,17 @@
-import 'dart:async';
-
-import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:rexpay/rexpay.dart';
-import 'package:rexpay/src/core/api/model/transaction_api_response.dart';
-import 'package:rexpay/src/core/api/request/ussd_request_body.dart';
-import 'package:rexpay/src/core/api/service/bank_service.dart';
-import 'package:rexpay/src/core/api/service/contracts/banks_service_contract.dart';
-import 'package:rexpay/src/core/api/service/contracts/ussd_services_contract.dart';
-import 'package:rexpay/src/core/api/service/custom_exception.dart';
 import 'package:rexpay/src/core/common/rexpay.dart';
-import 'package:rexpay/src/core/constants/colors.dart';
-import 'package:rexpay/src/models/bank.dart';
-import 'package:rexpay/src/models/charge.dart';
-import 'package:rexpay/src/models/checkout_response.dart';
-import 'package:rexpay/src/transaction/bank_transaction_manager.dart';
-import 'package:rexpay/src/views/buttons.dart';
-import 'package:rexpay/src/views/checkout/base_checkout.dart';
-import 'package:rexpay/src/views/checkout/checkout_widget.dart';
-import 'package:rexpay/src/views/common/extensions.dart';
-import 'package:rexpay/src/views/input/account_field.dart';
 
 class CheckoutLanding extends StatefulWidget {
   final Function(CheckoutMethod) selectCheckoutMethod;
 
-  CheckoutLanding({
+  const CheckoutLanding({
+    super.key,
     required this.selectCheckoutMethod,
   });
 
   @override
-  _CheckoutLandingState createState() => _CheckoutLandingState();
+  State<CheckoutLanding> createState() => _CheckoutLandingState();
 }
 
 class _CheckoutLandingState extends State<CheckoutLanding> {

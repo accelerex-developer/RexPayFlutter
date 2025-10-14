@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rexpay/src/core/common/utils.dart';
 import 'package:rexpay/src/core/constants/colors.dart';
 import 'package:rexpay/src/views/animated_widget.dart';
 import 'package:rexpay/src/views/common/extensions.dart';
@@ -88,7 +87,7 @@ class _SuccessfulWidgetState extends State<ErrorWidget> with TickerProviderState
             ),
             Text(widget.message,
                 style: TextStyle(
-                  color: context.textTheme().headline6?.color,
+                  color: context.textTheme().headlineMedium?.color,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0,
                 )),

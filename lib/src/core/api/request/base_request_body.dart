@@ -1,6 +1,3 @@
-import 'package:rexpay/rexpay.dart';
-import 'package:rexpay/src/core/common/rexpay.dart';
-
 abstract class BaseRequestBody {
   final fieldDevice = 'device';
   String? _device;
@@ -16,6 +13,6 @@ abstract class BaseRequestBody {
   _setDeviceId() {
     String deviceId = "device id string";
     // String deviceId = RexpayPlugin.platformInfo.deviceId;
-    this._device = deviceId;
+    _device = deviceId;
   }
 }

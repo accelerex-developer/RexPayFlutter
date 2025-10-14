@@ -4,31 +4,31 @@ class DioErrorUtil {
   // general methods:------------------------------------------------------------
   static String handleError(dynamic error) {
     String errorDescription = '';
-    if (error is DioError) {
+    if (error is DioException) {
       switch (error.type) {
-        case DioErrorType.cancel:
+        case DioExceptionType.cancel:
           errorDescription = 'Request to API server was cancelled';
           break;
-        case DioErrorType.connectTimeout:
+        case DioExceptionType.connectionTimeout:
           errorDescription = 'Connection timeout with API server';
           break;
-        case DioErrorType.other:
+        case DioExceptionType.unknown:
           errorDescription = 'No internet connection';
           break;
-        case DioErrorType.receiveTimeout:
+        case DioExceptionType.receiveTimeout:
           errorDescription = 'Receive timeout in connection with API server';
           break;
-        case DioErrorType.response:
-          if (error.response?.statusCode == 404)
+        case DioExceptionType.badResponse:
+          if (error.response?.statusCode == 404) {
+            errorDescription = error.response?.data["responseMessage"] ??
+                'Unexpected error occurred';
+          } else if (error.response?.statusCode == 400) {
             errorDescription =
-                error.response?.data["responseMessage"] ?? 'Unexpected error occurred';
-          else if (error.response?.statusCode == 400) {
-            errorDescription = error.response?.data["responseMessage"] ?? 'Bad request';
-          } 
-          else if (error.response?.statusCode == 422) {
-            errorDescription = error.response?.data["responseMessage"] ?? 'Bad request';
-          }
-          else if (error.response?.statusCode == 401) {
+                error.response?.data["responseMessage"] ?? 'Bad request';
+          } else if (error.response?.statusCode == 422) {
+            errorDescription =
+                error.response?.data["responseMessage"] ?? 'Bad request';
+          } else if (error.response?.statusCode == 401) {
             errorDescription = error.response?.data["responseMessage"] ??
                 'These credentials are wrong \nCheck and try again';
           } else if (error.response?.statusCode == 500) {
@@ -39,8 +39,14 @@ class DioErrorUtil {
                 'Received invalid status code: ${error.response?.statusCode}';
           }
           break;
-        case DioErrorType.sendTimeout:
+        case DioExceptionType.sendTimeout:
           errorDescription = 'Send timeout in connection with API server';
+          break;
+        case DioExceptionType.badCertificate:
+          errorDescription = 'Bad certificate error';
+          break;
+        case DioExceptionType.connectionError:
+          errorDescription = 'Unable to connect';
           break;
       }
     } else if (error is TypeError) {
@@ -54,7 +60,8 @@ class DioErrorUtil {
   static String normalizeError(dynamic error) {
     if (error.runtimeType.toString().toLowerCase().contains("map")) {
       if (error.containsKey("errors")) {
-        Map<String, dynamic> errors = Map<String, dynamic>.from(error["errors"]);
+        Map<String, dynamic> errors =
+            Map<String, dynamic>.from(error["errors"]);
         return errors.values.first[0];
       } else {
         return error["message"];

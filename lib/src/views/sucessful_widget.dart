@@ -94,7 +94,7 @@ class _SuccessfulWidgetState extends State<SuccessfulWidget> with TickerProvider
                 ? new Container()
                 : new Text('You paid ${Utils.formatAmount(widget.amount)}',
                     style: TextStyle(
-                      color: context.textTheme().headline6?.color,
+                      color: context.textTheme().headlineMedium?.color,
                       fontWeight: FontWeight.normal,
                       fontSize: 14.0,
                     )),

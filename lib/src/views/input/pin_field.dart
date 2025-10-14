@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rexpay/src/core/common/my_strings.dart';
-import 'package:rexpay/src/models/card.dart';
-import 'package:rexpay/src/views/common/extensions.dart';
 import 'package:rexpay/src/views/input/base_field.dart';
 
 

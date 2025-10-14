@@ -12,7 +12,6 @@ import 'package:rexpay/src/core/constants/colors.dart';
 import 'package:rexpay/src/models/card.dart';
 import 'package:rexpay/src/models/charge.dart';
 import 'package:rexpay/src/models/checkout_response.dart';
-import 'package:rexpay/src/transaction/card_transaction_manager.dart';
 import 'package:rexpay/src/views/buttons.dart';
 import 'package:rexpay/src/views/checkout/base_checkout.dart';
 import 'package:rexpay/src/views/checkout/checkout_widget.dart';

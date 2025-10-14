@@ -1,15 +1,14 @@
-import 'package:rexpay/src/core/api/request/base_request_body.dart';
 import 'package:rexpay/src/models/bank.dart';
 import 'package:rexpay/src/models/charge.dart';
 
 class USSDChargeRequestBody {
-  String _paymentChannel = "USSD";
-  String _customerName;
-  String _reference;
-  String _amount;
-  String _email;
-  String _callBackUrl;
-  String _currency;
+  final String _paymentChannel = "USSD";
+  final String _customerName;
+  final String _reference;
+  final String _amount;
+  final String _email;
+  final String _callBackUrl;
+  final String _currency;
   String? _paymentUrlReference;
   Bank? _bank;
 

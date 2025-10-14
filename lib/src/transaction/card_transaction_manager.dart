@@ -17,7 +17,7 @@ class CardTransactionManager extends BaseTransactionManager {
   late ValidateRequestBody validateRequestBody;
   late CardRequestBody chargeRequestBody;
   final CardServiceContract service;
-  var _invalidDataSentRetries = 0;
+  // var _invalidDataSentRetries = 0;
 
   CardTransactionManager({
     required Charge charge,

@@ -1,7 +1,6 @@
 import 'package:rexpay/rexpay.dart';
 import 'package:rexpay/src/core/api/model/transaction_api_response.dart';
 import 'package:rexpay/src/core/api/request/bank_charge_request_body.dart';
-import 'package:rexpay/src/models/bank.dart';
 
 abstract class BankServiceContract {
   Future<TransactionApiResponse> createPayment(BankChargeRequestBody? credentials, AuthKeys authKeys);

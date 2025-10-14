@@ -1,12 +1,8 @@
-import 'dart:async';
 
-import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:rexpay/rexpay.dart';
 import 'package:rexpay/src/core/api/model/transaction_api_response.dart';
 import 'package:rexpay/src/core/api/request/ussd_request_body.dart';
-import 'package:rexpay/src/core/api/service/bank_service.dart';
-import 'package:rexpay/src/core/api/service/contracts/banks_service_contract.dart';
 import 'package:rexpay/src/core/api/service/contracts/ussd_services_contract.dart';
 import 'package:rexpay/src/core/api/service/custom_exception.dart';
 import 'package:rexpay/src/core/common/rexpay.dart';
@@ -14,12 +10,10 @@ import 'package:rexpay/src/core/constants/colors.dart';
 import 'package:rexpay/src/models/bank.dart';
 import 'package:rexpay/src/models/charge.dart';
 import 'package:rexpay/src/models/checkout_response.dart';
-import 'package:rexpay/src/transaction/bank_transaction_manager.dart';
 import 'package:rexpay/src/views/buttons.dart';
 import 'package:rexpay/src/views/checkout/base_checkout.dart';
 import 'package:rexpay/src/views/checkout/checkout_widget.dart';
 import 'package:rexpay/src/views/common/extensions.dart';
-import 'package:rexpay/src/views/input/account_field.dart';
 
 class USSDCheckout extends StatefulWidget {
   final Charge charge;
@@ -28,7 +22,8 @@ class USSDCheckout extends StatefulWidget {
   final USSDServiceContract service;
   final AuthKeys authKeys;
 
-  USSDCheckout({
+  const USSDCheckout({
+    super.key,
     required this.charge,
     required this.onResponse,
     required this.onProcessingChange,
@@ -45,7 +40,7 @@ class _USSDCheckoutState extends BaseCheckoutMethodState<USSDCheckout> {
   late AnimationController _controller;
   late Animation<double> _animation;
   var _autoValidate = AutovalidateMode.disabled;
-  late Future<List<Bank>?>? _futureBanks;
+  // late Future<List<Bank>?>? _futureBanks;
   late USSDChargeRequestBody _ussdChargeRequestBody;
   bool _isLoadingUSSDDetails = false;
   bool _isUSSDGenerated = false;
