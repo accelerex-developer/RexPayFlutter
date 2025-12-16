@@ -1,3 +1,19 @@
+## 0.0.6
+
+* Include `cardDetails` in the card authorization (OTP) request payload
+  - Aligns the authorize call with the latest RexPay card API requirements
+  - Helps resolve \"AuthData Encryption Failed\" responses during OTP confirmation
+
+### How to Update
+
+1. **Update the SDK**
+   - Pull the latest changes from your repository, or
+   - Update the package dependency to the latest version (0.0.6)
+
+2. **Rebuild the app**
+   - Clean the build cache
+   - Rebuild/reinstall the app on your test devices
+
 ## 0.0.5
 
 * Add logging and user-facing error messages for bank transfer and USSD payments
