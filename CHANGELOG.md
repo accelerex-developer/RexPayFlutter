@@ -1,3 +1,19 @@
+## 0.0.7
+
+* Fix transfer and USSD amount conversion to match card behavior
+  - Treat `Charge.amount` as minor units (e.g. kobo) and convert to main currency with 2 decimal places
+  - Ensures transfers/USSD send `101.00` (not `10100`) when paying 101
+
+### How to Update
+
+1. **Update the SDK**
+   - Pull the latest changes from your repository, or
+   - Update the package dependency to the latest version (0.0.7)
+
+2. **Rebuild the app**
+   - Clean the build cache
+   - Rebuild/reinstall the app on your test devices
+
 ## 0.0.6
 
 * Include `cardDetails` in the card authorization (OTP) request payload

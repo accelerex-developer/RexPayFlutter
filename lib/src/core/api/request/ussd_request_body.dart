@@ -18,7 +18,8 @@ class USSDChargeRequestBody {
         _reference = charge.reference ?? "",
         _callBackUrl = charge.callBackUrl ?? "",
         _currency = charge.currency ?? "NGN",
-        _amount = charge.amount.toString(),
+        // Charge.amount is in minor units (e.g. kobo); convert to main unit for API
+        _amount = (charge.amount / 100).toStringAsFixed(2),
         _email = charge.email ?? "";
 
   Map<String, dynamic> toChargeUSSDJson() {
